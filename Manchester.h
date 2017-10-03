@@ -68,13 +68,16 @@ allowing us to transmit even with up to 100% in clock speed difference
 //  consider the pulses rising when starting transmitting.
 //  SYNC_PULSE_MIN should be much less than SYNC_PULSE_DEF
 //  all maximum of 255
-#define     SYNC_PULSE_MIN  1
-#define     SYNC_PULSE_DEF  3
-#define     SYNC_PULSE_MAX  5
+//#define     SYNC_PULSE_MIN  1
+//#define     SYNC_PULSE_DEF  3
+//#define     SYNC_PULSE_MAX  5
 
 //#define       SYNC_PULSE_MIN  10
 //#define       SYNC_PULSE_DEF  14
 //#define       SYNC_PULSE_MAX  16
+#define       SYNC_PULSE_MIN  16
+#define       SYNC_PULSE_DEF  60
+#define       SYNC_PULSE_MAX  62
 
 //define to use 1 or 0 to sync
 // when using 1 to sync, sending SYNC_PULSE_DEF 1's , and send a 0 to start data.
