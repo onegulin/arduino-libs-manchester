@@ -286,7 +286,7 @@ void MANRX_SetupReceive(uint8_t speedFactor)
    timer0_attachInterrupt(timer0_ISR);
    timer0_write(ESP.getCycleCount() + ESPtimer); //80Mhz -> 128us
    interrupts();
-  #elif defined( __AVR_ATtinyX5__ )
+  #elif defined( __AVR_ATtiny25__ ) || defined( __AVR_ATtiny45__ ) || defined( __AVR_ATtiny85__ )
 
     /*
     Timer 1 is used with a ATtiny85. 
@@ -372,7 +372,8 @@ void MANRX_SetupReceive(uint8_t speedFactor)
     How to find the correct value: (OCRxA +1) = F_CPU / prescaler / 1953.125
     OCR3A is 16 bit register
     */
-    
+    TCCR3A = 0;         // 2016, added, make it work for Leonardo
+    TCCR3B = 0;         // 2016, added, make it work for Leonardo
     TCCR3B = _BV(WGM32) | _BV(CS31); // 1/8 prescaler
     #if F_CPU == 1000000UL
       OCR3A = (64 >> speedFactor) - 1; 
